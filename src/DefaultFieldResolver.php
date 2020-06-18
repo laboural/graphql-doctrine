@@ -57,7 +57,7 @@ final class DefaultFieldResolver
             return $getter->invoke($source, ...$args);
         }
 
-        if (isset($source->{$fieldName})) {
+        if (isset($source->{$fieldName}) || method_exists($source, '__get')) {
             return $source->{$fieldName};
         }
 
